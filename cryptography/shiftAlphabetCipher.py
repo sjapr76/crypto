@@ -38,13 +38,11 @@ class shiftAlphabetCipher(alphabetCipher):
         self._shiftedAlphabet = "".join([alpha_upper[i+number]\
                                 if i+number <= lar-1 else alpha_upper[i+number-lar] \
                                 for i in range(lar)])
-        print "Original Alphabet: " + alpha_lower
-        print "Cipher Alphabet:   " + self._shiftedAlphabet
 
 if __name__ == "__main__":
     print "Test Encipher..."
     cipher = shiftAlphabetCipher(plain="Este texto esta cifrado.",shift=5)
     cipher.encipher()
     print "\nTest Decipher..."
-    cipher = shiftAlphabetCipher(ciphered="JXYJ YJCYT JXYF HNKWFIT.",shift=5)
+    cipher = shiftAlphabetCipher(ciphered="JXYJYJCYTJXYFHNKWFIT",shift=5)
     cipher.decipher()

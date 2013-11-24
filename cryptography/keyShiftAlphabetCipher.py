@@ -10,7 +10,7 @@ from cryptography.baseCipher import alpha_upper, alpha_lower
 class keyShiftAlphabetCipher(alphabetCipher):
     def __init__(self, plain=None, ciphered=None, key=None):
         self._shiftedAlphabet = None
-        if self.keyIsString(key):
+        if self.keyIsString(key.upper()):
             self._key = "".join(self.removeDuplicates(key.upper()))
             self.createShiftedAlphabet(self._key)
             alphabetCipher.__init__(self, plain, ciphered, self._shiftedAlphabet)
@@ -30,7 +30,7 @@ class keyShiftAlphabetCipher(alphabetCipher):
             return False
             
     def setKey(self,key):
-        if self.keyIsString(key):
+        if self.keyIsString(key.upper()):
             self._key = "".join(self.removeDuplicates(key.upper()))
             self.createShiftedAlphabet(self._key)
             alphabetCipher.__init__(self, self._plain, self._ciphered, self._shiftedAlphabet)
@@ -55,13 +55,11 @@ class keyShiftAlphabetCipher(alphabetCipher):
                     for i in range(lar)])
 
         self._shiftedAlphabet = key + rest_alph
-        print "Original Alphabet: " + alpha_lower
-        print "Cipher Alphabet:   " + self._shiftedAlphabet
 
 if __name__ == "__main__":
     print "Test Encipher..."
     cipher = keyShiftAlphabetCipher(plain="Este texto esta cifrado.",key="HOLACOMOESTAS")
     cipher.encipher()
     print "\nTest Decipher..."
-    cipher = keyShiftAlphabetCipher(ciphered="CGIC ICPIZ CGIH LTMFHAZ.",key="HOLACOMOESTAS")
+    cipher = keyShiftAlphabetCipher(ciphered="CGICICPIZCGIHLTMFHAZ",key="HOLACOMOESTAS")
     cipher.decipher()

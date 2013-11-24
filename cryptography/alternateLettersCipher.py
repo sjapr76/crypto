@@ -20,7 +20,7 @@ class alternateLettersCipher(baseCipher):
                 res.append(plain[lar-1])
             ciphered = "".join(res)
             self.setCiphered(ciphered)
-            print "Plain text: " + plain
+            print "Plain text: " + self.getPlain()
             print "Ciphered as: " + ciphered
         else:
             print "Set plain text. Use setPlain(text) function."
@@ -37,7 +37,7 @@ class alternateLettersCipher(baseCipher):
                 res.append(ciphered[lar-1])
             plain = "".join(res)
             self.setPlain(plain)
-            print "Ciphered text: " + ciphered
+            print "Ciphered text: " + self.getCiphered()
             print "Deciphered as: " + plain
         else:
             print "Set ciphered text. Use setCiphered(text) function."
