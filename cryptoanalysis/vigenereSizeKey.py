@@ -17,7 +17,7 @@ def getVigenereSizeKey(ciphered, rang, filt):
     listFactors = []
     for res in dicts:
         dictSpacing = calculateSpacing(res)
-        factors = getFactors(dictSpacing,(3,11))
+        factors = getFactors(dictSpacing,rang)
         listFactors.append(factors)
     
     factors = summarizeFactors(listFactors)
