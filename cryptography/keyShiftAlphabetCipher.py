@@ -6,12 +6,13 @@ Created on 23/11/2013
 
 from cryptography.alphabetCipher import alphabetCipher
 from cryptography.baseCipher import alpha_upper, alpha_lower
+from misc.tools import removeDuplicates, alphaToDict
 
 class keyShiftAlphabetCipher(alphabetCipher):
     def __init__(self, plain=None, ciphered=None, key=None):
         self._shiftedAlphabet = None
         if self.keyIsString(key.upper()):
-            self._key = "".join(self.removeDuplicates(key.upper()))
+            self._key = "".join(removeDuplicates(key.upper()))
             self.createShiftedAlphabet(self._key)
             alphabetCipher.__init__(self, plain, ciphered, self._shiftedAlphabet)
         else:
@@ -31,7 +32,7 @@ class keyShiftAlphabetCipher(alphabetCipher):
             
     def setKey(self,key):
         if self.keyIsString(key.upper()):
-            self._key = "".join(self.removeDuplicates(key.upper()))
+            self._key = "".join(removeDuplicates(key.upper()))
             self.createShiftedAlphabet(self._key)
             alphabetCipher.__init__(self, self._plain, self._ciphered, self._shiftedAlphabet)
         else:
@@ -46,9 +47,9 @@ class keyShiftAlphabetCipher(alphabetCipher):
             if letter in key: 
                 res.remove(letter)
         res = "".join(res)
-        nextPos = self.alphaToDict(alpha_upper)[key[len(key) - 1]] + 1
-        nextLetter = self.alphaToDict(alpha_upper,reverse=True)[nextPos]
-        firstPos = self.alphaToDict(res)[nextLetter]
+        nextPos = alphaToDict(alpha_upper)[key[len(key) - 1]] + 1
+        nextLetter = alphaToDict(alpha_upper,reverse=True)[nextPos]
+        firstPos = alphaToDict(res)[nextLetter]
         lar = len(res)
         rest_alph = "".join([res[i+firstPos]\
                     if i+firstPos <= lar - 1 else res[i+firstPos-lar] \

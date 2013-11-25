@@ -7,13 +7,14 @@ Created on 23/11/2013
 from cryptography.baseCipher import baseCipher
 from cryptography.baseCipher import alpha_upper, alpha_lower
 from cryptography.baseCipher import stressedVowelTranslate
+from misc.tools import removeDuplicates, alphaToDict
 
 class alphabetCipher(baseCipher):
     
     def __init__(self, plain=None, ciphered=None, alphabet=None):
         baseCipher.__init__(self, plain, ciphered)
         if alphabet:
-            new_alphabet = self.removeDuplicates(alphabet.upper())
+            new_alphabet = removeDuplicates(alphabet.upper())
             if len(new_alphabet) == 26:
                 self._alphabet = str(new_alphabet)
                 print "Original Alphabet: " + alpha_lower
@@ -24,7 +25,7 @@ class alphabetCipher(baseCipher):
             print "\nYou must set a 26 characters alphabet.\nUse the function setAlphabet(alphabet).\n"
     
     def setAlphabet(self, alph):
-        new_alphabet = self.removeDuplicates(alph)
+        new_alphabet = removeDuplicates(alph)
         if len(new_alphabet) == 26:
             self._alphabet = str(new_alphabet).upper()
         else:
@@ -37,7 +38,7 @@ class alphabetCipher(baseCipher):
         alph = self.getAlphabet()
         plain = self.getPlain()
         if alph and plain:
-            alphaDict = self.alphaToDict(alpha_lower)
+            alphaDict = alphaToDict(alpha_lower)
             res = []
             for character in plain:
                 try:
@@ -56,7 +57,7 @@ class alphabetCipher(baseCipher):
         alph = self.getAlphabet()
         ciphered = self.getCiphered()
         if alph and ciphered:
-            alphaDict = self.alphaToDict(alph)
+            alphaDict = alphaToDict(alph)
             res = []
             for character in ciphered:
                 try:

@@ -6,6 +6,7 @@ Created on 23/11/2013
 
 from cryptography.alphabetCipher import baseCipher
 from cryptography.baseCipher import alpha_upper, alpha_lower
+from misc.tools import alphaToDict
 
 matrixAlphabet = {'A': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 
                   'B': 'BCDEFGHIJKLMNOPQRSTUVWXYZA',
@@ -64,6 +65,9 @@ class vigenereCipher(baseCipher):
         else:
             print "\nYou must set a string as key.\n"
             
+    def getKey(self):
+        return self._key
+            
     def createRepeatedKey(self, key, text):
         if text:
             repeatedKey = ""
@@ -81,9 +85,9 @@ class vigenereCipher(baseCipher):
         alphaDict = {}
         for letter in key:
             if reverse:
-                alphaDict[letter] = self.alphaToDict(matrixAlphabet[letter],reverse=True)
+                alphaDict[letter] = alphaToDict(matrixAlphabet[letter],reverse=True)
             else:
-                alphaDict[letter] = self.alphaToDict(matrixAlphabet[letter])
+                alphaDict[letter] = alphaToDict(matrixAlphabet[letter])
         return alphaDict
         
     def _getPlain(self):
@@ -102,7 +106,7 @@ class vigenereCipher(baseCipher):
         if plain:
             alphabetsDict = self.generateAlphabets(self._key, reverse=True)
             self.createRepeatedKey(self._key, plain)
-            alphaDict = self.alphaToDict(alpha_upper)
+            alphaDict = alphaToDict(alpha_upper)
             res = []
             count = 0
             for character in plain:
@@ -122,7 +126,7 @@ class vigenereCipher(baseCipher):
         if ciphered:
             alphabetsDict = self.generateAlphabets(self._key)
             self.createRepeatedKey(self._key, ciphered)
-            alphaDict = self.alphaToDict(alpha_upper, reverse=True)
+            alphaDict = alphaToDict(alpha_upper, reverse=True)
             res = []
             count = 0
             for character in ciphered.upper():

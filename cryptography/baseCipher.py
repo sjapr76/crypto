@@ -38,21 +38,6 @@ class baseCipher:
         
     def getCiphered(self):
         return self._ciphered
-
-    def removeDuplicates(self,alph):
-        newAlph = []
-        for c in alph:
-            if c not in newAlph:
-                newAlph.append(c)
-        return "".join(newAlph)
-        
-    def alphaToDict(self, alph, reverse=None):
-        if reverse:
-            #pos as key, letter as value
-            return dict([[i,x] for i, x in enumerate(alph)])
-        else:
-            #letter as key, pos as value
-            return dict([[x,i] for i, x in enumerate(alph)])
         
     def translateVowel(self, vowela):
         return stressedVowelTranslate[vowela]
