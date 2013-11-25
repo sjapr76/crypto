@@ -1,10 +1,14 @@
+# -*- encoding: utf-8 -*-
 '''
 Created on 24/11/2013
 
 @author: Admin
 '''
 
-from cryptography.baseCipher import alpha_upper
+from misc.constants import alpha_upper, stressedVowelTranslate
+
+def translateVowel(vowela):
+    return stressedVowelTranslate[vowela]
 
 def getText(text):
     res = []

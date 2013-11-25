@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 '''
 Created on 23/11/2013
 
@@ -5,36 +6,8 @@ Created on 23/11/2013
 '''
 
 from cryptography.alphabetCipher import baseCipher
-from cryptography.baseCipher import alpha_upper, alpha_lower
+from misc.constants import alpha_upper, matrixAlphabet
 from misc.tools import alphaToDict
-
-matrixAlphabet = {'A': 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 
-                  'B': 'BCDEFGHIJKLMNOPQRSTUVWXYZA',
-                  'C': 'CDEFGHIJKLMNOPQRSTUVWXYZAB', 
-                  'D': 'DEFGHIJKLMNOPQRSTUVWXYZABC',
-                  'E': 'EFGHIJKLMNOPQRSTUVWXYZABCD', 
-                  'F': 'FGHIJKLMNOPQRSTUVWXYZABCDE', 
-                  'G': 'GHIJKLMNOPQRSTUVWXYZABCDEF', 
-                  'H': 'HIJKLMNOPQRSTUVWXYZABCDEFG', 
-                  'I': 'IJKLMNOPQRSTUVWXYZABCDEFGH', 
-                  'J': 'JKLMNOPQRSTUVWXYZABCDEFGHI', 
-                  'K': 'KLMNOPQRSTUVWXYZABCDEFGHIJ', 
-                  'L': 'LMNOPQRSTUVWXYZABCDEFGHIJK', 
-                  'M': 'MNOPQRSTUVWXYZABCDEFGHIJKL', 
-                  'N': 'NOPQRSTUVWXYZABCDEFGHIJKLM', 
-                  'O': 'OPQRSTUVWXYZABCDEFGHIJKLMN', 
-                  'P': 'PQRSTUVWXYZABCDEFGHIJKLMNO', 
-                  'Q': 'QRSTUVWXYZABCDEFGHIJKLMNOP', 
-                  'R': 'RSTUVWXYZABCDEFGHIJKLMNOPQ', 
-                  'S': 'STUVWXYZABCDEFGHIJKLMNOPQR', 
-                  'T': 'TUVWXYZABCDEFGHIJKLMNOPQRS', 
-                  'U': 'UVWXYZABCDEFGHIJKLMNOPQRST', 
-                  'V': 'VWXYZABCDEFGHIJKLMNOPQRSTU', 
-                  'W': 'WXYZABCDEFGHIJKLMNOPQRSTUV', 
-                  'X': 'XYZABCDEFGHIJKLMNOPQRSTUVW', 
-                  'Y': 'YZABCDEFGHIJKLMNOPQRSTUVWX', 
-                  'Z': 'ZABCDEFGHIJKLMNOPQRSTUVWXY'}
-
 
 class vigenereCipher(baseCipher):
     def __init__(self, plain=None, ciphered=None, key=None):

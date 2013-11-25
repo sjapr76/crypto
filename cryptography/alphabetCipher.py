@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 '''
 Created on 23/11/2013
 
@@ -5,9 +6,8 @@ Created on 23/11/2013
 '''
 
 from cryptography.baseCipher import baseCipher
-from cryptography.baseCipher import alpha_upper, alpha_lower
-from cryptography.baseCipher import stressedVowelTranslate
-from misc.tools import removeDuplicates, alphaToDict
+from misc.constants import alpha_lower, stressedVowelTranslate
+from misc.tools import removeDuplicates, alphaToDict, translateVowel
 
 class alphabetCipher(baseCipher):
     
@@ -45,7 +45,7 @@ class alphabetCipher(baseCipher):
                     res.append(alph[alphaDict[character.lower()]])
                 except Exception:
                     if character in stressedVowelTranslate.keys():
-                        res.append(self.translateVowel(character).upper())
+                        res.append(translateVowel(character).upper())
             ciphered = "".join(res)
             self.setCiphered(ciphered)
             print "Plain text: " + self.getPlain()

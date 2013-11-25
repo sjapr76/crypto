@@ -1,3 +1,4 @@
+# -*- encoding: utf-8 -*-
 '''
 Created on 23/11/2013
 
@@ -5,7 +6,7 @@ Created on 23/11/2013
 '''
 
 from cryptography.alphabetCipher import alphabetCipher
-from cryptography.baseCipher import alpha_upper, alpha_lower
+from misc.constants import alpha_upper
 from misc.tools import removeDuplicates, alphaToDict
 
 class keyShiftAlphabetCipher(alphabetCipher):
